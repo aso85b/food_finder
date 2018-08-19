@@ -7,7 +7,32 @@ def self.filepath=(path=nil)
 @@filepath = File.join(APP_ROOT, path)
 end
 
+#-------------------------------------------
 attr_accessor :name, :cuisine, :price
+
+def initialize(args={})
+@name    = args[:name]    || ""
+@cuisine = args[:cuisine] || ""
+@price   = args[:price]   || ""
+end
+
+#-------------------------------------------
+def self.build_using_questions
+	
+	args = {}
+
+	print "Restaurant name: "
+	args[:name] = gets.chomp.strip
+
+    print "Cuisine name: "
+	args[:cuisine] = gets.chomp.strip
+    
+    print "Average name: "
+	args[:price] = gets.chomp.strip
+
+return self.new(args)
+end
+
 #-------------------------------------------
 
 def self.file_exists?
