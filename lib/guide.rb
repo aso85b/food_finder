@@ -59,7 +59,7 @@ def do_action(action)
 
 	case action
 	when 'list'
-		puts "Listing..."
+		list
 	when 'find'
 		puts "Finding..."
 	when 'add'
@@ -70,6 +70,16 @@ def do_action(action)
 		puts "\n I do not understand that command!\n"
 	end
 
+end
+#-------------------------------------------
+def list
+
+	puts "\Listing restaurants\n\n".upcase
+	restaurant = Restaurant.saved_restaurants
+restaurants.each do |rest|
+puts "#{rest.name} | #{rest.cuisine} | #{rest.price}"
+end
+	
 end
 #-------------------------------------------
 def add
