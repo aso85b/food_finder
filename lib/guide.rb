@@ -63,13 +63,34 @@ def do_action(action)
 	when 'find'
 		puts "Finding..."
 	when 'add'
-		puts 'Adding'
+		add
 	when 'quit'
 		return :quit
 	else
 		puts "\n I do not understand that command!\n"
 	end
 
+end
+#-------------------------------------------
+def add
+
+	puts "\nAdd a restaurant\n\n".upcase
+	restaurant = Restaurant.new
+
+	print "Restaurant name: "
+	restaurant.name = gets.chomp.strip
+
+    print "Cuisine name: "
+	restaurant.cuisine = gets.chomp.strip
+    
+    print "Average name: "
+	restaurant.price = gets.chomp.strip
+
+if restaurant.save
+	puts "\n Restaurant Added\n\n"
+else
+	puts "\nSave Error: Restaurant not Added\n\n"
+end
 end
 #-------------------------------------------
 def introduction
