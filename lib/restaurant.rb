@@ -29,7 +29,7 @@ end
 
 def self.create_file
 	#create the restaurant file
-    File.Open(@@filepath, 'w') unless  file_exists?
+    File.open(@@filepath, 'w') unless  file_exists?
     return file_usable? 	
    
 end
