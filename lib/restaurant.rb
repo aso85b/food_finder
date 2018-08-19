@@ -28,7 +28,7 @@ def self.build_using_questions
 	args[:cuisine] = gets.chomp.strip
     
     print "Average name: "
-	args[:price] = gets.chomp.strip
+	args[:price]  = gets.chomp.strip
 
 return self.new(args)
 end
