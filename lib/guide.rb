@@ -75,7 +75,7 @@ end
 def list
 
 	puts "\Listing restaurants\n\n".upcase
-	restaurant = Restaurant.saved_restaurants
+	restaurants = Restaurant.saved_restaurants
 restaurants.each do |rest|
 puts "#{rest.name} | #{rest.cuisine} | #{rest.price}"
 end
