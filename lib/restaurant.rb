@@ -30,7 +30,11 @@ end
 def self.create_file
 	#create the restaurant file
 	File.open(@@filepath, 'w') unless file_exists?
+<<<<<<< HEAD
 	return file_usable?   
+=======
+	return file_usable?     
+>>>>>>> restaurantclass
 end
 #-------------------------------------------
 
