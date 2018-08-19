@@ -22,13 +22,13 @@ def self.build_using_questions
 	args = {}
 
 	print "Restaurant name: "
-	args[:name].name = gets.chomp.strip
+	args[:name] = gets.chomp.strip
 
     print "Cuisine name: "
-	args[:cuisine].cuisine = gets.chomp.strip
+	args[:cuisine] = gets.chomp.strip
     
     print "Average name: "
-	args[:price].price  = gets.chomp.strip
+	args[:price]  = gets.chomp.strip
 
 return self.new(args)
 end
