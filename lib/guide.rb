@@ -75,14 +75,13 @@ end
 def add
 
 	puts "\nAdd a restaurant\n\n".upcase
+	restaurant = Restaurant.build_using_questions
 
-
-restaurant = Restaurant.new(args)
-if restaurant.save  
-	puts "\n Restaurant Added\n\n"
-else
-	puts "\nSave Error: Restaurant not Added\n\n"
-end
+	if restaurant.save  
+		puts "\n Restaurant Added\n\n"
+	else
+		puts "\nSave Error: Restaurant not Added\n\n"
+	end
 end
 #-------------------------------------------
 def introduction
