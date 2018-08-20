@@ -1,4 +1,7 @@
-require "restaurant"
+require 'restaurant'
+require 'support/string_extend'
+
+
 class Guide 
 #-------------------------------------------
 class Config
@@ -33,9 +36,9 @@ def launch!
 	action = get_action #do that action
 	result = do_action(action)
 	#repeat until user quits
-    end
+end
 
-	conclusion
+conclusion
 
 end
 
@@ -50,8 +53,8 @@ def get_action
 		action = user_response.downcase.strip
 	end
 	return action
-		
-	end
+
+end
 
 
 #-------------------------------------------
@@ -74,15 +77,15 @@ end
 #-------------------------------------------
 def list
 
-	puts "\Listing restaurants\n\n".upcase
+	output_action_header("Listing Restaurants")
+
 	restaurants = Restaurant.saved_restaurants
-restaurants.each do |rest|
-puts "#{rest.name} | #{rest.cuisine} | #{rest.formatted_price}"
-end
+	output_restaurant_table(restaurants)
 	
 end
 #-------------------------------------------
 def add
+	output_action_header("Add a Restaurants")
 
 	puts "\nAdd a restaurant\n\n".upcase
 	restaurant = Restaurant.build_using_questions
@@ -95,8 +98,8 @@ def add
 end
 #-------------------------------------------
 def introduction
- puts "\n\n<<< Welcome to the Food Finder Program >>>\n\n"
- puts "This is an interactive guide to help you find the food you crave.\n\n"
+	puts "\n\n<<< Welcome to the Food Finder Program >>>\n\n"
+	puts "This is an interactive guide to help you find the food you crave.\n\n"
 end
 
 #-------------------------------------------
@@ -104,4 +107,27 @@ def conclusion
 	puts "\n<<< Goodbye an Bon Appetit! >>>\n\n\n"
 end
 #-------------------------------------------
+private
+def output_action_header(text)
+	puts "\n#{text.upcase.center(60)}\n\n"
+end
+#-------------------------------------------
+
+def output_restaurant_table(restaurants=[])
+
+	print " " + "Name".ljust(30)
+	print " " + "Cuisine".ljust(20)
+	print " " + "Price".rjust(6) + "\n"
+	puts "-" * 60
+	restaurants.each do |rest|
+		line = " " << rest.name.titleize.ljust(30)
+		line << " " + rest.cuisine.titleize.ljust(20)
+		line << " " + rest.formatted_price.rjust(6)
+		puts line
+	end
+	puts "No Listing Found" if restaurants.empty?
+	puts "-" * 60
+end
+#-------------------------------------------
+
 end
