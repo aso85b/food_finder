@@ -92,13 +92,15 @@ def find(keyword="")
 	if keyword
 		restaurants = Restaurant.saved_restaurants
 		found = restaurants.select do |rest|
-			rest.name.downcase.include?(keyword.downcase)
-			rest.cuisine.downcase.include?(keyword.downcase)
+			rest.name.downcase.include?(keyword.downcase) ||
+			rest.cuisine.downcase.include?(keyword.downcase) ||
 			rest.price.to_i <= keyword.to_i
 		end 
 		#output result
+		output_restaurant_table(found)
 	else
 		puts "Find using a key phrase to search the restaurant list"
+		puts "You must type a keyword after 'find ... '"
     end
 end
 
