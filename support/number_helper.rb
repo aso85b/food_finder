@@ -34,4 +34,3 @@ module NumberHelper
   return unit + integer + separator + precise_decimal
 end
 
-end
