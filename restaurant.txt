@@ -1,3 +1,4 @@
 Abidat	Kurdishfood	45
 Masala	Indian	45
 Rozhan	english	56
+quit	Indian	98
