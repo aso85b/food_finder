@@ -31,7 +31,8 @@ module NumberHelper
   		precise_decimal = decimal.ljust(precision, "0")
         end
 
-  return unit + integer + separator + precise_decimal
+     return unit + integer + separator + precise_decimal
+	end
 end
-end
+
 
