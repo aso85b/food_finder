@@ -5,12 +5,14 @@
 #
 
 APP_ROOT = File.dirname(__FILE__)
+
 #require  "#{APP_ROOT}/lib/guide"
 #reqire File.join(APP_ROOT, 'lib', 'guide.rb')
 #reqire File.join(APP_ROOT, 'lib', 'guide')
 
-$: .unshift(File.join(APP_ROOT, 'lib'))
-require 'guide'
+$LOAD_PATH.unshift(File.dirname(__FILE__))
+
+require 'lib/guide'
 
 guide = Guide.new('restaurant.txt')
 guide.launch!   

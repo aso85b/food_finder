@@ -1,4 +1,4 @@
-require 'restaurant'
+require 'lib/restaurant'
 require 'support/string_extend'
 
 
