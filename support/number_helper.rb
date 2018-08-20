@@ -21,16 +21,17 @@ module NumberHelper
 		if precision == 0 
 			precise_decimal = ''
 		else 
-	#make sure decimal is not nil
-	decimal ||= "0"
+	    #make sure decimal is not nil
+		decimal ||= "0"
 
-	#make sure the decimal is not too large
-	decimal = decimal[0, precision-1]
+		#make sure the decimal is not too large
+		decimal = decimal[0, precision-1]
 
-  	#make sure the decimal is not too short
-  	precise_decimal = decimal.ljust(precision, "0")
-  end
+  		#make sure the decimal is not too short
+  		precise_decimal = decimal.ljust(precision, "0")
+        end
 
   return unit + integer + separator + precise_decimal
+end
 end
 

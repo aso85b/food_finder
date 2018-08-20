@@ -1,4 +1,4 @@
-require_relative 'support/number_helper'
+require 'support/number_helper'
 
 class Restaurant
 
