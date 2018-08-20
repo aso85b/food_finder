@@ -1,4 +1,8 @@
+require 'support/number_helper'
+
 class Restaurant
+
+include NumberHelper
 
 @@filepath = nil
 
@@ -31,6 +35,13 @@ def self.build_using_questions
 	args[:price]  = gets.chomp.strip
 
 return self.new(args)
+end
+
+#-------------------------------------------
+def formatted_price
+
+number_to_currency(@price) 
+
 end
 
 #-------------------------------------------
