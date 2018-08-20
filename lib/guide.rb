@@ -47,8 +47,8 @@ def get_action
 	action = nil
 	#keep asking for user input until we get a valid action
 	until Guide::Config.actions.include?(action)
-		puts "Actions: "+ Guide::Config.actions.join(", ") #if action
-		print "> "
+		puts "Actions: "+ Guide::Config.actions.join(", ") 
+		print "Enter an order please: > "
 		user_response = gets.chomp
 		args = user_response.downcase.strip.split(' ')
 		action = args.shift
@@ -80,7 +80,7 @@ end
 def list(args=[])
 	sort_order = args.shift
 	sort_order = args.shift if sort_order == 'by'
-	sort_order = "name" unless ['name', 'cuisine','price'].include?(sort_order)
+	sort_order = "name" unless ['name', 'cuisine','price', 'phone'].include?(sort_order)
 
 
 	output_action_header("Listing Restaurants")
@@ -94,6 +94,8 @@ def list(args=[])
 			r1.cuisine.downcase <=> r2.cuisine.downcase
 		when 'price'
 			r1.price.to_i <=> r2.price.to_i
+		when 'phone'
+		    r1.phone.to_i <=> r2.phone.to_i
 		end
 	end #unless
 
@@ -110,7 +112,8 @@ def find(keyword="")
 		found = restaurants.select do |rest|
 			rest.name.downcase.include?(keyword.downcase) ||
 			rest.cuisine.downcase.include?(keyword.downcase) ||
-			rest.price.to_i <= keyword.to_i
+			rest.price.to_i <= keyword.to_i ||
+			rest.phone.to_i <= keyword.to_i
 		end 
 		#output result
 		output_restaurant_table(found)
@@ -154,17 +157,19 @@ end
 def output_restaurant_table(restaurants=[])
 
 	print " " + "Name".ljust(30)
-	print " " + "Cuisine".ljust(20)
-	print " " + "Price".rjust(6) + "\n"
-	puts "-" * 60
+	print " " + "Cuisine".ljust(30)
+	print " " + "Price".ljust(20) 
+	print " " + "Phone".rjust(6)+ "\n"
+	puts "*" * 91
 	restaurants.each do |rest|
 		line = " " << rest.name.titleize.ljust(30)
-		line << " " + rest.cuisine.titleize.ljust(20)
-		line << " " + rest.formatted_price.rjust(6)
+		line << " " + rest.cuisine.titleize.ljust(30)
+		line << " " + rest.formatted_price.ljust(20)
+		line << " " + rest.phone.to_s.titleize.rjust(6)
 		puts line
 	end
 	puts "No Listing Found" if restaurants.empty?
-	puts "-" * 60
+	puts "-" * 91
 end
 #-------------------------------------------
 

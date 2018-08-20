@@ -2,3 +2,7 @@ Abidat	Kurdishfood	45
 Masala	Indian	45
 Rozhan	english	56
 quit	Indian	98
+CHav	italian	34	98760
+Lindo	Kurdish	98	4567
+Tatar	persian	45	09876
+Dinnera	Brizilian	99	23451

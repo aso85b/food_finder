@@ -13,12 +13,13 @@ def self.filepath=(path=nil)
 end
 
 #-------------------------------------------
-attr_accessor :name, :cuisine, :price
+attr_accessor :name, :cuisine, :price, :phone
 
 def initialize(args={})
 @name    = args[:name]    || ""
 @cuisine = args[:cuisine] || ""
 @price   = args[:price]   || ""
+@phone   = args[:phone]   || ""
 end
 
 #-------------------------------------------
@@ -34,6 +35,9 @@ def self.build_using_questions
     
     print "Average name: "
 	args[:price]  = gets.chomp.strip
+
+	print "Phone Number: "
+	args[:phone]  = gets.chomp.strip
 
 return self.new(args)
 end
@@ -91,7 +95,7 @@ end
 #-------------------------------------------
 def import_line(line)
 	line_array = line.split("\t")
-	@name, @cuisine, @price = line_array
+	@name, @cuisine, @price, @phone = line_array
 	return self	
 end
 
@@ -101,7 +105,7 @@ def save
 
 	return false unless Restaurant.file_usable?
 	File.open(@@filepath, 'a') do |file|
-		file.puts "#{[@name, @cuisine, @price].join("\t")}\n"
+		file.puts "#{[@name, @cuisine, @price, @phone].join("\t")}\n"
 	end
 	return true
 end
