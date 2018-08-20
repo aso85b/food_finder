@@ -1,6 +1,6 @@
 require 'lib/restaurant'
 require 'support/string_extend'
-
+require 'pry-byebug'
 
 class Guide 
 #-------------------------------------------
@@ -63,7 +63,7 @@ def do_action(action, args=[])
 
 	case action
 	when 'list'
-		list(args)
+		list(args=[])
 	when 'find'  
 		keyword = args.shift
 		find(keyword)
@@ -105,15 +105,16 @@ def list(args=[])
 end
 #-------------------------------------------
 def find(keyword="")
-
+#binding.pry
 	output_action_header("Find a Restaurant")
+	found = nil
 	if keyword
 		restaurants = Restaurant.saved_restaurants
 		found = restaurants.select do |rest|
 			rest.name.downcase.include?(keyword.downcase) ||
 			rest.cuisine.downcase.include?(keyword.downcase) ||
-			(rest.price.to_i <= keyword.to_i)   ||
-			(rest.phone.to_i <= keyword.to_i)
+			(rest.price.to_i == keyword.to_i)   ||
+		  (rest.phone.to_i == keyword.to_i)
 		end 
 		#output result
 		output_restaurant_table(found)
