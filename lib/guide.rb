@@ -157,13 +157,13 @@ end
 
 def output_restaurant_table(restaurants=[])
 
-	print " " + "Name".ljust(30)
+	print " " + "Name".ljust(30) 
 	print " " + "Cuisine".ljust(30)
 	print " " + "Price".ljust(20) 
 	print " " + "Phone".rjust(6)+ "\n"
 	puts "*" * 91
 	restaurants.each do |rest|
-		line = " " << rest.name.titleize.ljust(30)
+		line = " " << rest.name.titleize.ljust(30) 
 		line << " " + rest.cuisine.titleize.ljust(30)
 		line << " " + rest.formatted_price.ljust(20)
 		line << " " + rest.phone.to_s.titleize.rjust(6)
